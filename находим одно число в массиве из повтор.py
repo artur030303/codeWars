@@ -75,20 +75,35 @@
          
 
 
-def stray(arr):
-    num_count = {}
-    result= []
+# def stray(arr):
+#     num_count = {}
+#     result= []
     
-    for num in arr:
-        if num in num_count:
-            num_count[num] += 1
-        else:
-            num_count[num] =1
-    print(num_count)
-    for key,value in num_count.items():
-        if value ==1:
-            result.append(key)
-    return result[0]     
+#     for num in arr:
+#         if num in num_count:
+#             num_count[num] += 1
+#         else:
+#             num_count[num] =1
+#     print(num_count)
+#     for key,value in num_count.items():
+#         if value ==1:
+#             result.append(key)
+#     return result[0]     
 
+# print(stray([17, 17, 3, 17, 17, 17, 17,12,12,2,4,4, 5, 5 ,6]))
+
+
+
+def stray(arr):
+    
+    num_count = {num: arr.count(num) for num in arr}
+    unique_num = [ num for num,count in num_count.items() if count==1]
+    return unique_num[0]
 print(stray([17, 17, 3, 17, 17, 17, 17,12,12,2,4,4, 5, 5 ,6]))
 
+# from collections import Counter
+
+# arr = [17, 17, 3, 17, 17, 17, 17, 12, 12, 2, 4, 4, 5, 5, 6]
+# num_count = dict(Counter(arr))  # Автоматически считает вхождения
+
+# print(num_count)
